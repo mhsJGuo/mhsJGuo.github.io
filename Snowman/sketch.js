@@ -9,7 +9,7 @@ function draw() {
   // put drawing code here
 
   //Ground Colour
-fill(0,255,0)
+fill(0,255,0);
   //Ground
 rect(0,300,400,100);
 
