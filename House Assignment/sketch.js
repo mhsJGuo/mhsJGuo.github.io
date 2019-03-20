@@ -8,7 +8,7 @@ function setup() {
   // put setup code here
   //Create the canvas
   createCanvas(800,600);
-  background(0,0,255);
+  background(0,0,255)
 }
 
 function draw() {
@@ -16,7 +16,6 @@ function draw() {
   //Set the width of the house
   //Change this variable to scale the house
   let houseWidth=100;
-  
 //line
   //Line Colour (Black)
   stroke(0,0,0);
