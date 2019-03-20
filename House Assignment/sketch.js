@@ -8,7 +8,7 @@ function setup() {
   // put setup code here
   //Create the canvas
   createCanvas(800,600);
-  background(0,0,255)
+  background(0,0,255);
 }
 
 function draw() {
