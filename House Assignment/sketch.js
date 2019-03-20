@@ -16,6 +16,7 @@ function draw() {
   //Set the width of the house
   //Change this variable to scale the house
   let houseWidth=100;
+  
 //line
   //Line Colour (Black)
   stroke(0,0,0);
