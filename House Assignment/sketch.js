@@ -54,12 +54,12 @@ function draw() {
   //Chimmney
     //Chimmney Colour (Black)
     fill(0,0,0);
-    rect(width/2,height/2-houseWidth/3,houseWidth/7,houseWidth/3);
+    rect(width/2, height/2-houseWidth/3, houseWidth/7, houseWidth/3);
 
   //Sun
     //Sun Colour(Yellow)
     fill(255,255,0);
-    ellipse(0,0, houseWidth);
+    ellipse(0, 0, houseWidth);
 
   //Path To House
     //Path Colour (Grey)
