@@ -1,4 +1,4 @@
-
+//Code should draw a black line when you press the left mouse button(pencil) and while draw a white line when you press the right mouse button(eraser)
 function setup() {
   // put setup code here
   createCanvas(800, 600);
