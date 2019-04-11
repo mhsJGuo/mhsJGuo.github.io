@@ -23,7 +23,7 @@ function draw() {
       strokeWeight(100);
       stroke(255);
       line(mouseX, mouseY, pmouseX, pmouseY);
-    //What happens if nothing is pressed
+
     }
   }
 
