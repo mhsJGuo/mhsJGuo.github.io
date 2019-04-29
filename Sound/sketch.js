@@ -1,7 +1,7 @@
 var image;
 
 function preload() {
-   image = loadImage("image.png")
+   image = loadImage("image.jfif")
 }
 function setup() {
   // put setup code here
