@@ -1,37 +1,44 @@
-let flip;
+//Variables for the Cordinates
+let x = 0;
+let y = 0;
 
-let image1;
-let image2;
+//Variable for the Size
+let size = 50;
 
-function preload(){
-  image1 = loadImage("heads.png")
-  image2 = loadImage("tails.png")
-}
+//Vaiable for Speed
+let xSpeed = 5;
+let ySpeed= 10;
 
 function setup() {
-	createCanvas(400, 400);
+  createCanvas(800, 600);
+  background(127.5);
 }
 
 function draw() {
-	background(220);
 
-}
+  //Used to set the speed
+  x = x+ xSpeed
 
-function mousePressed() {
+  //To draw the ellipse
+  for (let x = 0; x <= width; x = x + size) {
+    ellipse(x, y, size, size);
 
-  coinFlip();
+  }
 
-}
+  //Used to set the Speed
+  y = y+ ySpeed
 
-function coinFlip() {
+  //To draw the ellipse
+  for (let y = 0; y <= height; y = y + size) {
+    ellipse(x, y, size, size);
 
-	let flip = random(100);
+  }
 
-while (flip < 50) {
-		image(image1,100,width/2,height/2)
-	}
-while (flip>50) {
-		image(image2,100,width/2,height/2)
-	}
-
+  //To make the circles change directions when they touch the edges
+  if(x >= width || x <= 0){
+    xSpeed=xSpeed*(-1);
+  }
+  if(y >= height || y <= 0){
+    ySpeed=ySpeed*(-1);
+  }
 }
