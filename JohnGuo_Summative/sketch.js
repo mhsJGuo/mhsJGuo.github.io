@@ -35,11 +35,28 @@ let fallSpeed2 = 13.5;
 
 let fallSpeed3 = 15;
 
-let img;
+//Car being used
+let car;
+
+//All car colors
+let blueCar;
+let redCar;
+let greenCar;
+let yellowCar;
+let orangeCar;
+let whiteCar;
 
 function preload() {
-  img = loadImage('car1.png');
-}
+  //Loads in the cars
+  blueCar = loadImage('blueCar.png');
+  redCar = loadImage('redCar.png');
+  greenCar = loadImage('greenCar.png');
+  yellowCar = loadImage('yellowCar.png');
+  orangeCar = loadImage('orangeCar.png');
+  whiteCar = loadImage('whiteCar.png');
+  car = loadImage('blueCar.png')
+
+}//End function preload
 
 function setup() {
 //Centers the canvas on the window
@@ -52,8 +69,8 @@ function draw() {
   //Menu screen
   if (level === 101) {
     background(0);
-
-    image (img,0,0,100,100);
+    //Shows the car you are using
+    image ( car, 113, height/6, size/2, size);
     //Creates the dashed lines
     drawingContext.setLineDash([25,20]);
     stroke(255,255,0);
@@ -214,23 +231,48 @@ function draw() {
     else if (level === 103) {
       background(0);
 
-      //Creates the dashed lines
-      drawingContext.setLineDash([25,20]);
+      //Shows the car you are using
+      translate(280,450);
+      rotate(PI/2);
+      image ( car, 0, 0, size, size*1.75);
+      rotate(PI/2*3);
+      translate(-280,-450);
+
+      //Creates the lines in background
       stroke(255,255,0);
-      line(100, 0, 100, 800);
-      line(200, 0, 200, 800);
+      line(100, 50, 100, 425);
+      line(200, 50, 200, 425);
+      line(0, 245, 300, 245);
       stroke(0);
-      drawingContext.setLineDash([]);
+
 
       //Back button
       fill(255);
       rect( 50, 650, 200, 80);
-
       textAlign(CENTER,CENTER)
       stroke(0);
       fill(0);
       textSize(50);
       text("BACK", width/2, 690)
+
+      //Shows the availabe cars
+      image ( redCar, 13, height/24*8, size/2, size);
+      image ( blueCar, 113, height/24*8, size/2, size);
+      image ( greenCar, 213, height/24*8, size/2, size);
+      //translate and rotate are for rotating the cars
+      translate( 88, 216.67);
+      rotate(PI);
+      image ( whiteCar, 0, 0, size/2, size);
+      rotate(PI);
+      translate( 100, 0);
+      rotate(PI);
+      image ( orangeCar, 0, 0, size/2, size);
+      rotate(PI);
+      translate( 100, 0);
+      rotate(PI);
+      image ( yellowCar, 0, 0, size/2, size);
+      rotate(PI);
+      translate( -213, -height/24*2);
 
     }//End else if
 
@@ -261,7 +303,7 @@ function draw() {
       stroke(0);
       fill(255);
       textSize(20);
-      text("To play move the car using \n either w and d or \n left and right arrows \n to avoid the obstacles.", width/2, height/2)
+      text("To play, move the car using \n either w and d or the \n left and right arrows \n to avoid the obstacles.", width/2, height/2)
 
     }//End else if
 
@@ -432,131 +474,201 @@ function draw() {
 
 //For buttons
 function mouseReleased() {
+  //Buttons on menu screen
+    //Button for play screen
+    if (level === 101) {
+      hit = collidePointRect( mouseX, mouseY, 50, 450, 200, 80);
 
-  //Button for play screen
-  if (level === 101) {
-    hit = collidePointRect( mouseX, mouseY, 50, 450, 200, 80);
+      if (hit === true) {
+        level = 102
 
-    if (hit === true) {
-      level = 102
-
-    }//End if
-
-  }//End if
-
-  //Button for cars screen
-  if (level === 101) {
-    hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
-
-    if (hit === true) {
-      level = 103
+      }//End if
 
     }//End if
 
-  }//End if
+    //Button for cars screen
+    if (level === 101) {
+      hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
 
-  //Button for help screen
-  if (level === 101) {
-    hit = collidePointRect( mouseX, mouseY, 50, 650, 200, 80);
+      if (hit === true) {
+        level = 103
 
-    if (hit === true) {
-      level = 104
-
-    }//End if
-
-  }//End if
-
-  //Button for easy mode
-  if (level === 102) {
-    hit = collidePointRect( mouseX, mouseY, 50, 70, 200, 80);
-
-    if (hit === true) {
-      level = 1
+      }//End if
 
     }//End if
 
-  }//End if
+    //Button for help screen
+    if (level === 101) {
+      hit = collidePointRect( mouseX, mouseY, 50, 650, 200, 80);
 
-  //Button for medium mode
-  if (level === 102) {
-    hit = collidePointRect( mouseX, mouseY, 50, 170, 200, 80);
+      if (hit === true) {
+        level = 104
 
-    if (hit === true) {
-      level = 2
-
-    }//End if
-
-  }//End if
-
-  //Button for hard mode
-  if (level === 102) {
-    hit = collidePointRect( mouseX, mouseY, 50, 270, 200, 80);
-
-    if (hit === true) {
-      level = 3
+      }//End if
 
     }//End if
 
-  }//End if
+    //Back button
+    //Back button for help screen
+    if (level === 104) {
+      hit = collidePointRect( mouseX, mouseY, 50, 70, 200, 80);
 
-  //Back button for help screen
-  if (level === 104) {
-    hit = collidePointRect( mouseX, mouseY, 50, 70, 200, 80);
+      if (hit === true){
+        level = 101
 
-    if (hit === true){
-      level = 101
-
-    }//End if
-
-  }//End if
-
-  //Back button for all other screens
-  if (level === 102 || level === 103 || level === 201 || level === 202 || level === 203) {
-    hit = collidePointRect( mouseX, mouseY, 50, 650, 200, 80);
-
-    if (hit === true) {
-      level = 101;
-      score = 0;
+      }//End if
 
     }//End if
 
-  }//End if
+    //Back button for all other screens
+      if (level === 102 || level === 103 || level === 201 || level === 202 || level === 203) {
+        hit = collidePointRect( mouseX, mouseY, 50, 650, 200, 80);
 
-  //Button to restart easy mode
-  if (level === 201) {
-    hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
+        if (hit === true) {
+          level = 101;
+          score = 0;
 
-    if (hit === true){
-      level = 1
-      score = 0;
+        }//End if
 
-    }//End if
+      }//End if
 
-  }//End if
+  //Buttons on level play screen
+    //Button for easy mode
+    if (level === 102) {
+      hit = collidePointRect( mouseX, mouseY, 50, 70, 200, 80);
 
-  //Button to restart medium mode
-  if (level === 202) {
-    hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
+      if (hit === true) {
+        level = 1
 
-    if (hit === true){
-      level = 2
-      score = 0;
-
-    }//End if
-
-  }//End if
-
-  //Button to restart hard mode
-  if (level === 203) {
-    hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
-
-    if (hit === true){
-      level = 3;
-      score = 0;
+      }//End if
 
     }//End if
 
-  }//End if
+    //Button for medium mode
+    if (level === 102) {
+      hit = collidePointRect( mouseX, mouseY, 50, 170, 200, 80);
+
+      if (hit === true) {
+        level = 2
+
+      }//End if
+
+    }//End if
+
+    //Button for hard mode
+    if (level === 102) {
+      hit = collidePointRect( mouseX, mouseY, 50, 270, 200, 80);
+
+      if (hit === true) {
+        level = 3
+
+      }//End if
+
+    }//End if
+
+  //Button for restarting
+    //Button to restart easy mode
+    if (level === 201) {
+      hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
+
+      if (hit === true){
+        level = 1
+        score = 0;
+
+      }//End if
+
+    }//End if
+
+    //Button to restart medium mode
+    if (level === 202) {
+      hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
+
+      if (hit === true){
+        level = 2
+        score = 0;
+
+      }//End if
+
+    }//End if
+
+    //Button to restart hard mode
+    if (level === 203) {
+      hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
+
+      if (hit === true){
+        level = 3;
+        score = 0;
+
+      }//End if
+
+    }//End if
+
+  //Buttons for choosing cars
+    //Button for choosing blue car
+    if (level === 103) {
+      hit = collidePointRect( mouseX, mouseY, 113, height/24*8, size/2, size);
+
+      if (hit === true) {
+        car = loadImage('blueCar.png');
+
+      }//End if
+
+    }//End if
+
+    //Button for choosing red car
+    if (level === 103) {
+      hit = collidePointRect( mouseX, mouseY, 13, height/24*8, size/2, size);
+
+      if (hit === true) {
+        car = loadImage('redCar.png');;
+
+      }//End if
+
+    }//End if
+
+    //Button for choosing green car
+    if (level === 103) {
+      hit = collidePointRect( mouseX, mouseY, 213, height/24*8, size/2, size);
+
+      if (hit === true) {
+        car = loadImage('greenCar.png');;
+
+      }//End if
+
+    }//End if
+
+    //Button for choosing white car
+    if (level === 103) {
+      hit = collidePointRect( mouseX, mouseY, 13, height/24*2, size/2, size);
+
+      if (hit === true) {
+        car = loadImage('whiteCar.png');
+
+      }//End if
+
+    }//End if
+
+    //Button for choosing orange car
+    if (level === 103) {
+      hit = collidePointRect( mouseX, mouseY, 113, height/24*2, size/2, size);
+
+      if (hit === true) {
+        car = loadImage('orangeCar.png');
+
+      }//End if
+
+    }//End if
+
+    //Button for choosing yellow car
+    if (level === 103) {
+      hit = collidePointRect( mouseX, mouseY, 213, height/24*2, size/2, size);
+
+      if (hit === true) {
+        car = loadImage('yellowCar.png');
+
+      }//End if
+
+    }//End if
 
 }//End function mouseReleased
 
@@ -581,7 +693,7 @@ function keyReleased() {
 function drawCar() {
   //The car
   fill(255);
-  rect( carx, cary, size/2.25, size/1.25);
+  image(car, carx, cary, size/2.25, size/1.25);
 
   //Stops the car from going to far left
   if (carx <= 50 ) {
