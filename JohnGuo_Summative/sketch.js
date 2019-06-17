@@ -637,7 +637,7 @@ function drawEasy() {
     score = score + 1;
 
     //Speed of the obstacles increase
-    fallSpeed1 = fallSpeed1 + .1;
+    fallSpeed1 = fallSpeed1 + .5;
   }//End if
 
 
@@ -704,7 +704,7 @@ function drawMedium() {
     score = score + 1;
 
     //Speed of the obstacles increase
-    fallSpeed2 = fallSpeed2 + .1;
+    fallSpeed2 = fallSpeed2 + .5;
   }//End if
 
 
@@ -770,7 +770,7 @@ function drawHard() {
     score = score + 1;
 
     //Speed of the obstacles increase
-    fallSpeed3 = fallSpeed3 + .1;
+    fallSpeed3 = fallSpeed3 + .5;
   }//End if
 
 
