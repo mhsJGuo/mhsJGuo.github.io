@@ -300,7 +300,7 @@ function draw() {
       stroke(0);
       fill(255);
       textSize(20);
-      text("To play, move the car using \n either w and d or the \n left and right arrows \n to avoid the obstacles.", width/2, height/2)
+      text("To play, move the car using \n either a and d or the \n left and right arrows \n to avoid the obstacles.", width/2, height/2)
     }//End else if
 
   //Lose screen
