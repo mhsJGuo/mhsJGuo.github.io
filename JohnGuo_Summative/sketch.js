@@ -49,6 +49,9 @@ let yellowCar;
 let orangeCar;
 let whiteCar;
 
+//Y location of the background
+let backy = 0;
+
 function preload() {
   //Loads in the cars
   blueCar = loadImage('blueCar.png');
@@ -178,13 +181,22 @@ function draw() {
       else if (level === 1) {
         background(0);
 
-        //Creates the dashed lines
+        //Code for the dashed lines
         drawingContext.setLineDash([25,20]);
         stroke(255,255,0);
-        line(100, 0, 100, 800);
-        line(200, 0, 200, 800);
+        line(100, backy - 800, 100, 800);
+        line(200, backy - 800, 200, 800);
         stroke(0);
         drawingContext.setLineDash([]);
+
+        //Allows the dashed lines to move
+        if (backy < 800) {
+          backy = backy + fallSpeed1;
+        }//End if
+
+        if (backy >= 800) {
+          backy = backy = 0;
+        }//End if
 
         noStroke();
         drawCar();
@@ -195,13 +207,22 @@ function draw() {
       else if (level === 2) {
         background(0);
 
-        //Creates the dashed lines
+        //Code for dashed lines
         drawingContext.setLineDash([25,20]);
         stroke(255,255,0);
-        line(100, 0, 100, 800);
-        line(200, 0, 200, 800);
+        line(100, backy - 800, 100, 800);
+        line(200, backy - 800, 200, 800);
         stroke(0);
         drawingContext.setLineDash([]);
+
+        //Allows the dashed lines to move
+        if (backy < 800) {
+          backy = backy + fallSpeed2;
+        }//End if
+
+        if (backy >= 800) {
+          backy = backy = 0;
+        }//End if
 
         noStroke();
         drawCar();
@@ -212,13 +233,22 @@ function draw() {
       else if (level === 3) {
         background(0);
 
-        //Creates the dashed lines
+        //Code for dashed lines
         drawingContext.setLineDash([25,20]);
         stroke(255,255,0);
-        line(100, 0, 100, 800);
-        line(200, 0, 200, 800);
+        line(100, backy - 800, 100, 800);
+        line(200, backy - 800, 200, 800);
         stroke(0);
         drawingContext.setLineDash([]);
+
+        //Allows the dashed lines to move
+        if (backy < 800) {
+          backy = backy + fallSpeed3;
+        }//End if
+
+        if (backy >= 800) {
+          backy = backy = 0;
+        }//End if
 
         noStroke();
         drawCar();
@@ -582,8 +612,8 @@ function drawEasy() {
   //Shows the score
   fill(255);
   textSize(25);
-  text( "Score:", 50, 25);
-  text( score, 100, 25);
+  text( "Score:", 50, 75);
+  text( score, 100, 75);
 
   hit1 = collideRectCircle( carx, cary, size/2.25 , size/1.25, deathx1, deathy1, size/2, size/2);
   hit2 = collideRectCircle( carx, cary, size/2.25 , size/1.25, deathx2, deathy2, size/2, size/2);
@@ -648,8 +678,8 @@ function drawMedium() {
   //Shows the score
   fill(255);
   textSize(25);
-  text( "Score:", 50, 25);
-  text( score, 100, 25);
+  text( "Score:", 50, 75);
+  text( score, 100, 75);
 
   hit1 = collideRectCircle( carx, cary, size/2.25 , size/1.25, deathx1, deathy1, size/2, size/2);
   hit2 = collideRectCircle( carx, cary, size/2.25 , size/1.25, deathx2, deathy2, size/2, size/2);
@@ -715,8 +745,8 @@ function drawHard() {
   //Shows the score
   fill(255);
   textSize(25);
-  text( "Score:", 50, 25);
-  text( score, 100, 25);
+  text( "Score:", 50, 75);
+  text( score, 100, 75);
 
   hit1 = collideRectCircle( carx, cary, size/2.25 , size/1.25, deathx1, deathy1, size/2, size/2);
   hit2 = collideRectCircle( carx, cary, size/2.25 , size/1.25, deathx2, deathy2, size/2, size/2);
