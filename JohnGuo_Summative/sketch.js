@@ -7,7 +7,7 @@ let hit;
 let hit1;
 //Hit variable for obstacle #2
 let hit2;
-//Hit variables for obstacles whn they reach the bottom of the canvas
+//Hit variables for obstacles when they reach the bottom of the canvas
 let hit3;
 let hit4;
 
@@ -30,10 +30,13 @@ let deathy2 = 0;
 
 //3 different fall speed for the 3 different modes
 let fallSpeed1 = 8;
-
 let fallSpeed2 = 13.5;
-
 let fallSpeed3 = 15;
+
+//For the restart buttons
+let easyLose = false;
+let mediumLose = false;
+let hardLose = false;
 
 //Car being used
 let car;
@@ -300,9 +303,8 @@ function draw() {
       text("To play, move the car using \n either w and d or the \n left and right arrows \n to avoid the obstacles.", width/2, height/2)
     }//End else if
 
-  //Created multiple lose screen because I wanted to do a restart button
-  //Lose screen for easy mode
-  else if (level === 201) {
+  //Lose screen
+  else if (level === 200) {
     background(0);
 
     //Creates the dashed lines
@@ -340,110 +342,35 @@ function draw() {
     textSize(45);
     text("RESTART", width/2, 590)
 
-    //Shows score
-    textAlign(CENTER,CENTER)
-    stroke(255);
-    fill(255);
-    textSize(50);
-    text("Score in\n Easy Mode:", width/2, height/2-100);
-    text(score, width/2, height/2);
-  }//End else if
+    //Shows score if you lose in easy mode
+    if (easyLose === true) {
+      textAlign(CENTER,CENTER)
+      stroke(255);
+      fill(255);
+      textSize(50);
+      text("Score in\n Easy Mode:", width/2, height/2-100);
+      text(score, width/2, height/2);
+    }//End if
 
-  //Lose screen for medium mode
-  else if (level === 202) {
-    background(0);
+    //Shows score if you lose in medium mode
+    if (mediumLose === true) {
+      textAlign(CENTER,CENTER)
+      stroke(255);
+      fill(255);
+      textSize(50);
+      text("Score in\n Medium Mode:", width/2, height/2-100);
+      text(score, width/2, height/2);
+    }//End if
 
-    //Creates the dashed lines
-    drawingContext.setLineDash([25,20]);
-    stroke(255,255,0);
-    line(100, 0, 100, 800);
-    line(200, 0, 200, 800);
-    stroke(0);
-    drawingContext.setLineDash([]);
-
-    //Resets all variable related to medium mode
-    carx = 116.7;
-    cary = 650;
-    deathx1 = 250;
-    deathy1 = 0;
-    deathx2 = 250;
-    deathy2 = 0;
-    fallSpeed2 = 13.5;
-
-    //Back button
-    fill(255);
-    rect( 50, 650, 200, 80);
-    textAlign(CENTER,CENTER)
-    stroke(0);
-    fill(0);
-    textSize(50);
-    text("BACK", width/2, 690)
-
-    //Restart button
-    fill(255);
-    rect( 50, 550, 200, 80);
-    textAlign(CENTER,CENTER)
-    stroke(0);
-    fill(0);
-    textSize(45);
-    text("RESTART", width/2, 590)
-
-    //Show score
-    textAlign(CENTER,CENTER)
-    stroke(255);
-    fill(255);
-    textSize(50);
-    text("Score in\n Medium Mode:", width/2, height/2-100);
-    text(score, width/2, height/2);
-  }//End else if
-
-  //Lose screen for hard mode
-  else if (level === 203) {
-    background(0);
-
-    //Creates the dashed lines
-    drawingContext.setLineDash([25,20]);
-    stroke(255,255,0);
-    line(100, 0, 100, 800);
-    line(200, 0, 200, 800);
-    stroke(0);
-    drawingContext.setLineDash([]);
-
-    //Resets all variables related to hard mode
-    carx = 116.7;
-    cary = 650;
-    deathx1 = 250;
-    deathy1 = 0;
-    deathx2 = 250;
-    deathy2 = 0;
-    fallSpeed3 = 15;
-
-    //Back button
-    fill(255);
-    rect( 50, 650, 200, 80);
-    textAlign(CENTER,CENTER)
-    stroke(0);
-    fill(0);
-    textSize(50);
-    text("BACK", width/2, 690)
-
-    //Restart button
-    fill(255);
-    rect( 50, 550, 200, 80);
-    textAlign(CENTER,CENTER)
-    stroke(0);
-    fill(0);
-    textSize(45);
-    text("RESTART", width/2, 590)
-
-    //Shows score
-    textAlign(CENTER,CENTER)
-    stroke(255);
-    fill(255);
-    textSize(50);
-    text("Score in\n Hard Mode:", width/2, height/2-100);
-    text(score, width/2, height/2);
-
+    //Shows score if you lose in hard mode
+    if (hardLose === true) {
+      textAlign(CENTER,CENTER)
+      stroke(255);
+      fill(255);
+      textSize(50);
+      text("Score in\n Hard Mode:", width/2, height/2-100);
+      text(score, width/2, height/2);
+    }//End if
   }//End else if
 
 }//End function draw
@@ -489,12 +416,15 @@ function mouseReleased() {
     }//End if
 
     //Back button for all other screens
-      if (level === 102 || level === 103 || level === 201 || level === 202 || level === 203) {
+      if (level === 102 || level === 103 || level === 200 || level === 200 || level === 200) {
         hit = collidePointRect( mouseX, mouseY, 50, 650, 200, 80);
 
         if (hit === true) {
           level = 101;
           score = 0;
+          easyLose = false;
+          mediumLose = false;
+          hardLose = false;
         }//End if
       }//End if
 
@@ -526,34 +456,29 @@ function mouseReleased() {
       }//End if
     }//End if
 
-  //Button for restarting
-    //Button to restart easy mode
-    if (level === 201) {
+    //Button for restarting
+    if (level === 200) {
       hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
 
-      if (hit === true){
-        level = 1
+      //If you lose in easy mode
+      if (hit === true && easyLose === true) {
+        level = 1;
         score = 0;
+        easyLose = false;
       }//End if
-    }//End if
 
-    //Button to restart medium mode
-    if (level === 202) {
-      hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
-
-      if (hit === true){
-        level = 2
+      //If you lose in medium mode
+      if (hit === true && mediumLose === true) {
+        level = 2;
         score = 0;
+        mediumLose = false;
       }//End if
-    }//End if
 
-    //Button to restart hard mode
-    if (level === 203) {
-      hit = collidePointRect( mouseX, mouseY, 50, 550, 200, 80);
-
-      if (hit === true){
+      //If you lose in hard mode
+      if (hit === true && hardLose === true) {
         level = 3;
         score = 0;
+        hardLose = false;
       }//End if
     }//End if
 
@@ -685,14 +610,14 @@ function drawEasy() {
 
   //If car hits obstacle #1
   if (hit1 === true) {
-    //Goes to the lose screen for easy mode
-    level = 201;
+    level = 200;
+    easyLose = true;
   }//End if
 
   //If car hits obstacle #2
   if (hit2 === true) {
-    //Goes to the lose screen for easy mode
-    level = 201;
+    level = 200;
+    easyLose = true;
   }//End if
 
   //If obstacles reach the bottom of the screen
@@ -751,14 +676,15 @@ function drawMedium() {
 
   //If car hits obstacle #1
   if (hit1 === true) {
-    //Goes to the lose screen for medium mode
-    level = 202;
+    level = 200;
+    mediumLose = true;
   }//End if
 
   //If car hits obstacle #2
   if (hit2 === true) {
     //Goes to the lose screen for medium mode
-    level = 202;
+    level = 200;
+    mediumLose = true;
   }//End if
 
   //If obstacles reach the bottom of the screen
@@ -817,14 +743,14 @@ function drawHard() {
 
   //If car hits obstacle #1
   if (hit1 === true) {
-    //Goes to the lose screen for hard mode
-    level = 203;
+    level = 200;
+    hardLose = true;
   }//End if
 
   //If car hits obstacle #2
   if (hit2 === true) {
-    //Goes to the lose screen for hard mode
-    level = 203;
+    level = 200;
+    hardLose = true;
   }//End if
 
   //If obstacles reach the bottom of the screen
