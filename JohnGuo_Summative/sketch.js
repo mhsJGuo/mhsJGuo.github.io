@@ -56,12 +56,14 @@ function preload() {
   whiteCar = loadImage('whiteCar.png');
   car = loadImage('blueCar.png')
 
+
 }//End function preload
 
 function setup() {
 //Centers the canvas on the window
 let canvas = createCanvas(300,800);
 canvas.position(windowWidth/2-150,windowHeight/2-400);
+
 
 }//End function setup
 
@@ -71,6 +73,7 @@ function draw() {
     background(0);
     //Shows the car you are using
     image ( car, 113, height/6, size/2, size);
+
     //Creates the dashed lines
     drawingContext.setLineDash([25,20]);
     stroke(255,255,0);
@@ -90,7 +93,6 @@ function draw() {
     //Button for play screen
     fill(255);
     rect(50,450,200,80);
-
     textAlign(CENTER,CENTER)
     stroke(0);
     fill(0);
@@ -100,7 +102,6 @@ function draw() {
     //Button for cars screen
     fill(255);
     rect(50,550,200,80);
-
     textAlign(CENTER,CENTER)
     stroke(0);
     fill(0);
@@ -110,13 +111,11 @@ function draw() {
     //Button for help screen
     fill(255);
     rect(50,650,200,80);
-
     textAlign(CENTER,CENTER)
     stroke(0);
     fill(0);
     textSize(50);
     text("HELP", width/2, 690)
-
   }//End if
 
     //Difficulty screen
@@ -170,7 +169,6 @@ function draw() {
       fill(0);
       textSize(50);
       text("BACK", width/2, 690)
-
     }//End else if
 
       //Easy mode screen
@@ -188,7 +186,6 @@ function draw() {
         noStroke();
         drawCar();
         drawEasy();
-
       }//End else if
 
       //Medium mode screen
@@ -206,7 +203,6 @@ function draw() {
         noStroke();
         drawCar();
         drawMedium();
-
       }//End else if
 
       //Hard mode screen
@@ -224,7 +220,6 @@ function draw() {
         noStroke();
         drawCar();
         drawHard();
-
       }//End else if
 
     //Cars screen
@@ -245,7 +240,6 @@ function draw() {
       line(0, 245, 300, 245);
       stroke(0);
 
-
       //Back button
       fill(255);
       rect( 50, 650, 200, 80);
@@ -259,6 +253,7 @@ function draw() {
       image ( redCar, 13, height/24*8, size/2, size);
       image ( blueCar, 113, height/24*8, size/2, size);
       image ( greenCar, 213, height/24*8, size/2, size);
+
       //translate and rotate are for rotating the cars
       translate( 88, 216.67);
       rotate(PI);
@@ -273,7 +268,6 @@ function draw() {
       image ( yellowCar, 0, 0, size/2, size);
       rotate(PI);
       translate( -213, -height/24*2);
-
     }//End else if
 
     //Help screen
@@ -304,7 +298,6 @@ function draw() {
       fill(255);
       textSize(20);
       text("To play, move the car using \n either w and d or the \n left and right arrows \n to avoid the obstacles.", width/2, height/2)
-
     }//End else if
 
   //Created multiple lose screen because I wanted to do a restart button
@@ -323,19 +316,15 @@ function draw() {
     //Resets all variables related to easy mode
     carx = 116.7;
     cary = 650;
-
     deathx1 = 250;
     deathy1 = 0;
-
     deathx2 = 250;
     deathy2 = 0;
-
     fallSpeed1 = 8;
 
     //Back button
     fill(255);
     rect( 50, 650, 200, 80);
-
     textAlign(CENTER,CENTER)
     stroke(0);
     fill(0);
@@ -345,7 +334,6 @@ function draw() {
     //Restart button
     fill(255);
     rect( 50, 550, 200, 80);
-
     textAlign(CENTER,CENTER)
     stroke(0);
     fill(0);
@@ -359,7 +347,6 @@ function draw() {
     textSize(50);
     text("Score in\n Easy Mode:", width/2, height/2-100);
     text(score, width/2, height/2);
-
   }//End else if
 
   //Lose screen for medium mode
@@ -377,19 +364,15 @@ function draw() {
     //Resets all variable related to medium mode
     carx = 116.7;
     cary = 650;
-
     deathx1 = 250;
     deathy1 = 0;
-
     deathx2 = 250;
     deathy2 = 0;
-
     fallSpeed2 = 13.5;
 
     //Back button
     fill(255);
     rect( 50, 650, 200, 80);
-
     textAlign(CENTER,CENTER)
     stroke(0);
     fill(0);
@@ -399,7 +382,6 @@ function draw() {
     //Restart button
     fill(255);
     rect( 50, 550, 200, 80);
-
     textAlign(CENTER,CENTER)
     stroke(0);
     fill(0);
@@ -413,7 +395,6 @@ function draw() {
     textSize(50);
     text("Score in\n Medium Mode:", width/2, height/2-100);
     text(score, width/2, height/2);
-
   }//End else if
 
   //Lose screen for hard mode
@@ -431,19 +412,15 @@ function draw() {
     //Resets all variables related to hard mode
     carx = 116.7;
     cary = 650;
-
     deathx1 = 250;
     deathy1 = 0;
-
     deathx2 = 250;
     deathy2 = 0;
-
     fallSpeed3 = 15;
 
     //Back button
     fill(255);
     rect( 50, 650, 200, 80);
-
     textAlign(CENTER,CENTER)
     stroke(0);
     fill(0);
@@ -453,7 +430,6 @@ function draw() {
     //Restart button
     fill(255);
     rect( 50, 550, 200, 80);
-
     textAlign(CENTER,CENTER)
     stroke(0);
     fill(0);
@@ -481,9 +457,7 @@ function mouseReleased() {
 
       if (hit === true) {
         level = 102
-
       }//End if
-
     }//End if
 
     //Button for cars screen
@@ -492,9 +466,7 @@ function mouseReleased() {
 
       if (hit === true) {
         level = 103
-
       }//End if
-
     }//End if
 
     //Button for help screen
@@ -503,21 +475,17 @@ function mouseReleased() {
 
       if (hit === true) {
         level = 104
-
       }//End if
-
     }//End if
 
-    //Back button
+  //Back button
     //Back button for help screen
     if (level === 104) {
       hit = collidePointRect( mouseX, mouseY, 50, 70, 200, 80);
 
       if (hit === true){
         level = 101
-
       }//End if
-
     }//End if
 
     //Back button for all other screens
@@ -527,9 +495,7 @@ function mouseReleased() {
         if (hit === true) {
           level = 101;
           score = 0;
-
         }//End if
-
       }//End if
 
   //Buttons on level play screen
@@ -539,9 +505,7 @@ function mouseReleased() {
 
       if (hit === true) {
         level = 1
-
       }//End if
-
     }//End if
 
     //Button for medium mode
@@ -550,9 +514,7 @@ function mouseReleased() {
 
       if (hit === true) {
         level = 2
-
       }//End if
-
     }//End if
 
     //Button for hard mode
@@ -561,9 +523,7 @@ function mouseReleased() {
 
       if (hit === true) {
         level = 3
-
       }//End if
-
     }//End if
 
   //Button for restarting
@@ -574,9 +534,7 @@ function mouseReleased() {
       if (hit === true){
         level = 1
         score = 0;
-
       }//End if
-
     }//End if
 
     //Button to restart medium mode
@@ -586,9 +544,7 @@ function mouseReleased() {
       if (hit === true){
         level = 2
         score = 0;
-
       }//End if
-
     }//End if
 
     //Button to restart hard mode
@@ -598,9 +554,7 @@ function mouseReleased() {
       if (hit === true){
         level = 3;
         score = 0;
-
       }//End if
-
     }//End if
 
   //Buttons for choosing cars
@@ -610,9 +564,7 @@ function mouseReleased() {
 
       if (hit === true) {
         car = loadImage('blueCar.png');
-
       }//End if
-
     }//End if
 
     //Button for choosing red car
@@ -621,9 +573,7 @@ function mouseReleased() {
 
       if (hit === true) {
         car = loadImage('redCar.png');;
-
       }//End if
-
     }//End if
 
     //Button for choosing green car
@@ -632,9 +582,7 @@ function mouseReleased() {
 
       if (hit === true) {
         car = loadImage('greenCar.png');;
-
       }//End if
-
     }//End if
 
     //Button for choosing white car
@@ -643,9 +591,7 @@ function mouseReleased() {
 
       if (hit === true) {
         car = loadImage('whiteCar.png');
-
       }//End if
-
     }//End if
 
     //Button for choosing orange car
@@ -654,9 +600,7 @@ function mouseReleased() {
 
       if (hit === true) {
         car = loadImage('orangeCar.png');
-
       }//End if
-
     }//End if
 
     //Button for choosing yellow car
@@ -665,10 +609,9 @@ function mouseReleased() {
 
       if (hit === true) {
         car = loadImage('yellowCar.png');
-
       }//End if
-
     }//End if
+
 
 }//End function mouseReleased
 
@@ -678,14 +621,13 @@ function keyReleased() {
   //Moves the car to the left
   if (keyCode === 65 || keyCode === LEFT_ARROW) {
     carx = carx - 100;
-
   }//End if
 
   //Moves the car to the right
   else if (keyCode === 68 || keyCode === RIGHT_ARROW){
     carx = carx + 100;
-
   }//End else if
+
 
 }//End function keyReleased
 
@@ -718,7 +660,6 @@ function drawEasy() {
   text( "Score:", 50, 25);
   text( score, 100, 25);
 
-
   hit1 = collideRectCircle( carx, cary, size/2.25 , size/1.25, deathx1, deathy1, size/2, size/2);
   hit2 = collideRectCircle( carx, cary, size/2.25 , size/1.25, deathx2, deathy2, size/2, size/2);
   hit3 = collideLineCircle( 0, height + size/2, width, height + size/2, deathx1, deathy1, size/2, size/2);
@@ -727,7 +668,6 @@ function drawEasy() {
   //The obstacles locations are chosen between 50, 150, or 250
   let location1 = ["50","150","250"];
   let r1 = random(location1);
-
   let location2 = ["50","150","250"];
   let r2 = random(location2);
 
@@ -741,21 +681,18 @@ function drawEasy() {
 
   //Speed of the obstacles
   deathy1 = deathy1 + fallSpeed1;
-
   deathy2 = deathy2 + fallSpeed1;
 
   //If car hits obstacle #1
   if (hit1 === true) {
     //Goes to the lose screen for easy mode
     level = 201;
-
   }//End if
 
   //If car hits obstacle #2
   if (hit2 === true) {
     //Goes to the lose screen for easy mode
     level = 201;
-
   }//End if
 
   //If obstacles reach the bottom of the screen
@@ -763,7 +700,6 @@ function drawEasy() {
     //The obstacles change or keep their locations
     deathx1 = r1;
     deathx2 = r2;
-
   }//End if
 
   //If obstacle reach the bottom of the screen
@@ -777,8 +713,8 @@ function drawEasy() {
 
     //Speed of the obstacles increase
     fallSpeed1 = fallSpeed1 + .1;
-
   }//End if
+
 
 }//End function drawEasy
 
@@ -798,7 +734,6 @@ function drawMedium() {
   //The obstacles locations are chosen between 50, 150, or 250
   let location1 = ["50","150","250"];
   let r1 = random(location1);
-
   let location2 = ["50","150","250"];
   let r2 = random(location2);
 
@@ -812,21 +747,18 @@ function drawMedium() {
 
   //Speed of the obstacles
   deathy1 = deathy1 + fallSpeed2;
-
   deathy2 = deathy2 + fallSpeed2;
 
   //If car hits obstacle #1
   if (hit1 === true) {
     //Goes to the lose screen for medium mode
     level = 202;
-
   }//End if
 
   //If car hits obstacle #2
   if (hit2 === true) {
     //Goes to the lose screen for medium mode
     level = 202;
-
   }//End if
 
   //If obstacles reach the bottom of the screen
@@ -834,7 +766,6 @@ function drawMedium() {
     //The obstacles change or keep their locations
     deathx1 = r1;
     deathx2 = r2;
-
   }//End if
 
   //If obstacle reach the bottom of the screen
@@ -848,8 +779,8 @@ function drawMedium() {
 
     //Speed of the obstacles increase
     fallSpeed2 = fallSpeed2 + .1;
-
   }//End if
+
 
 }//End function drawMedium
 
@@ -869,7 +800,6 @@ function drawHard() {
   //The obstacles locations are chosen between 50, 150, or 250
   let location1 = ["50","150","250"];
   let r1 = random(location1);
-
   let location2 = ["50","150","250"];
   let r2 = random(location2);
 
@@ -883,21 +813,18 @@ function drawHard() {
 
   //Speed of the obstacles
   deathy1 = deathy1 + fallSpeed3;
-
   deathy2 = deathy2 + fallSpeed3;
 
   //If car hits obstacle #1
   if (hit1 === true) {
     //Goes to the lose screen for hard mode
     level = 203;
-
   }//End if
 
   //If car hits obstacle #2
   if (hit2 === true) {
     //Goes to the lose screen for hard mode
     level = 203;
-
   }//End if
 
   //If obstacles reach the bottom of the screen
@@ -905,7 +832,6 @@ function drawHard() {
     //The obstacles change or keep their locations
     deathx1 = r1;
     deathx2 = r2;
-
   }//End if
 
   //If obstacle reach the bottom of the screen
@@ -919,7 +845,7 @@ function drawHard() {
 
     //Speed of the obstacles increase
     fallSpeed3 = fallSpeed3 + .1;
-
   }//End if
+
 
 }//End function drawHard
